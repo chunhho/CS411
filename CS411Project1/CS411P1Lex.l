@@ -5,24 +5,24 @@
 
 %%
 
-"boolean"		return _boolean;
-"break"			return _break;
-"class"			return _class;
-"double"		return _double;
-"else"			return _else;
-"extends"		return _extends;
-"for"			return _for;
-"if" 			return _if;
-"implements"	return _implements;
-"int"			return _int;
-"interface"		return _interface;
-"newarray"		return _newarray;
-"println"		return _println;
-"readln"		return _readln;
-"return" 		return _return;
-"string" 		return _string;
-"void" 			return _void;
-"while"			return _while;
+"boolean"		{insertSymbolTable(yytext);return _boolean;}
+"break"			{insertSymbolTable(yytext);return _break;}
+"class"			{insertSymbolTable(yytext);return _class;}
+"double"		{insertSymbolTable(yytext);return _double;}
+"else"			{insertSymbolTable(yytext);return _else;}
+"extends"		{insertSymbolTable(yytext);return _extends;}
+"for"			{insertSymbolTable(yytext);return _for;}
+"if" 			{insertSymbolTable(yytext);return _if;}
+"implements"	{insertSymbolTable(yytext);return _implements;}
+"int"			{insertSymbolTable(yytext);return _int;}
+"interface"		{insertSymbolTable(yytext);return _interface;}
+"newarray"		{insertSymbolTable(yytext);return _newarray;}
+"println"		{insertSymbolTable(yytext);return _println;}
+"readln"		{insertSymbolTable(yytext);return _readln;}
+"return" 		{insertSymbolTable(yytext);return _return;}
+"string" 		{insertSymbolTable(yytext);return _string;}
+"void" 			{insertSymbolTable(yytext);return _void;}
+"while"			{insertSymbolTable(yytext);return _while;}
 "+"				return _plus;
 "-"				return _minus;
 "*"				return _multiplication;
@@ -54,7 +54,7 @@
 [0-9]+\.[0-9]*([Ee][+-]?[0-9]+)? 	return _doubleconstant;
 [0-9]+([Ee][+-]?[0-9]+)? 			return _doubleconstant;
 \"[^"\n]*\"							return _stringconstant;
-[a-zA-Z]+[a-zA-Z0-9_]* 				return _id;
+[a-zA-Z]+[a-zA-Z0-9_]* 				{insertSymbolTable(yytext);return _id;}
 
 [\n]					printf("\n");
 [ \t]					;
