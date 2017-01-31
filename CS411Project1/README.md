@@ -48,6 +48,7 @@ sample.toy <--> sampleOutput.txt
 7. A boolean constant is either true or false.
 
 8. Operators and punctuation characters include:
-  + - * / % < <= > >= == != && || ! = ; , . ( ) [ ] { }
+    +   -   *   /   %   <   <=   >   >=   ==  
+    !=   =   ;   ,   .   (   )   [   ]   {   }
 
 9. A single-line comment is started by // and extends to the end of the line. Multi-line comments start with /* and end with the first subsequent */. Any symbol is allowed in a comment except the sequence */ which ends the current comment. Multi-line comments do not nest.
