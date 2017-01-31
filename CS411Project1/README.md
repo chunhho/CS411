@@ -13,9 +13,12 @@ You need to install flex in a UNIX environment. sudo apt-get install flex.
 ## To Run The Lexical Analyzer
 
 The steps to run the lexical analyzer:
- lex CS411P1Lex.l
- cc lex.yy.c -ll
- ./a.out < test.toy
+
+    lex CS411P1Lex.l
+
+    cc lex.yy.c -ll
+
+    ./a.out < test.toy
 
 ## Tests
 
@@ -31,9 +34,9 @@ sample.toy <--> sampleOutput.txt
 ## Project Specifications
 
 1. Keywords which are also reserved words. They cannot be used as identifiers or redefined:
-  boolean break class double else extends false for
-  if implements int interface newarray println readln
-  return string true void while
+   boolean break class double else extends false for
+   if implements int interface newarray println readln
+   return string true void while
     
 2. An identifier is a sequence of letters, digits, and underscores, starting with a letter. Toy is case-sensitive, e.g., if is a keyword, but IF is an identifier; hello and Hello are two distinct identifiers.
 
@@ -48,6 +51,6 @@ sample.toy <--> sampleOutput.txt
 7. A boolean constant is either true or false.
 
 8. Operators and punctuation characters include:
-  \+   -   *   /   %   <   <=   >   >=   ==  !=   =   ;   ,   .   (   )   [   ]   {   }
+   \+   -   *   /   %   <   <=   >   >=   ==  !=   =   ;   ,   .   (   )   [   ]   {   }
 
 9. A single-line comment is started by // and extends to the end of the line. Multi-line comments start with /* and end with the first subsequent */. Any symbol is allowed in a comment except the sequence */ which ends the current comment. Multi-line comments do not nest.
