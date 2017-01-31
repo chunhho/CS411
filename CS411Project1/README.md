@@ -22,14 +22,14 @@ The steps to run the lexical analyzer:
 
 ## Tests
 
-test.toy is provided by this project
-sample.toy is my own test case
+    test.toy is provided by this project
+    sample.toy is my own test case
 
-testOutput.txt is the output of the test.toy
-sampleOutput.txt is the output of my own test case
+    testOutput.txt is the output of the test.toy
+    sampleOutput.txt is the output of my own test case
 
-test.toy <--> testOutput.txt
-sample.toy <--> sampleOutput.txt
+    test.toy <--> testOutput.txt
+    sample.toy <--> sampleOutput.txt
 
 ## Project Specifications
 
