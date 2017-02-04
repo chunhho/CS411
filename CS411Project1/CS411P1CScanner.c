@@ -5,7 +5,7 @@ extern int yylex();
 extern int yylineno;
 extern char* yytext;
 
-#define maxTransition 200
+#define maxTransition 1000
 #define TRUE 1
 #define FALSE 0
 
@@ -207,8 +207,9 @@ void insertSymbolTable(char* yytext){
       }
     }
 
-    //Check if the jump chosen is a terminal, if not need to add jump
-    if(strlen(yytext) == 1 && symbolTable.symbolArr[ptr] != '*'){
+    //If the pointer reach end of the word, but the next char isn't a terminal
+    //then it must continue jumping if it exists or create a jump to the terminal
+    if(exit == FALSE && symbolTable.symbolArr[ptr] != '*'){
       exit = TRUE;
     }
 
@@ -225,12 +226,28 @@ void insertSymbolTable(char* yytext){
       if(symbolTable.nextArr[ptr] == -1){
         //Set new jump location
         nextPos = getLastPos();
+        symbolTable.nextArr[ptr] = nextPos;
+
       }
       else{
         //Get new jump location
         nextPos = symbolTable.nextArr[ptr];
+
       }
-      symbolTable.nextArr[ptr] = nextPos;
+      //symbolTable.nextArr[ptr] = nextPos;
+
+      //If end of the word and there's jump
+      if (index >= strlen(yytext)){
+        while (symbolTable.nextArr[nextPos] != -1){
+
+          if(symbolTable.symbolArr[nextPos] == '*'){
+            break;
+          }
+          else{
+            nextPos = symbolTable.nextArr[nextPos];
+          }
+        }
+      }
 
 
       //if nowhere to jump, then it needs to be added to the end, and a jump to know to go there.
@@ -301,7 +318,7 @@ int main(void){
    int ntoken, vtoken;
    ntoken = yylex();
    while(ntoken){
-       printf("%s ", names[ntoken]);
+      printf("%s ", names[ntoken]);
       ntoken = yylex();
    }
 

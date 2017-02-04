@@ -15,18 +15,19 @@ You need to install flex in a UNIX environment. sudo apt-get install flex.
 The steps to run the lexical analyzer:
  lex CS411P1Lex.l
  cc lex.yy.c -ll
- ./a.out < test.toy
+ ./a.out < Sample.toy
+ ./a.out < CS411TestCase.toy
 
 ## Tests
 
 test.toy is provided by this project
-sample.toy is my own test case
+CS411TestCase.toy is my own test case
 
-testOutput.txt is the output of the test.toy
-sampleOutput.txt is the output of my own test case
+SampleOutput.txt is the output of the test.toy
+CS411TestCaseOutput.txt is the output of my own test case
 
-test.toy <--> testOutput.txt
-sample.toy <--> sampleOutput.txt
+test.toy <--> SampleOutput.txt
+CS411TestCase.toy <--> CS411TestCaseOutput.txt
 
 ## Project Specifications
 

@@ -1,0 +1,132 @@
+Translated text:
+
+id interface id leftbrace 
+
+rightbrace 
+int id leftparen int id rightparen leftbrace 
+string id assignop readln leftparen rightparen semicolon 
+id leftparen id rightparen leftbrace 
+id leftparen id equal intconstant rightparen 
+break semicolon 
+rightbrace 
+rightbrace 
+
+
+void id leftparen rightparen leftbrace 
+string id assignop stringconstant semicolon 
+int id semicolon 
+int id semicolon 
+boolean id assignop booleanconstant semicolon boolean id assignop booleanconstant 
+id assignop not booleanconstant semicolon 
+int id assignop intconstant semicolon 
+int id assignop intconstant semicolon 
+int id assignop intconstant semicolon 
+double id assignop doubleconstant semicolon 
+double id assignop doubleconstant semicolon 
+double id assignop doubleconstant semicolon 
+double id assignop doubleconstant semicolon 
+double id assignop doubleconstant semicolon 
+println leftparen stringconstant rightparen semicolon 
+int leftbracket rightbracket id semicolon 
+id assignop newarray leftparen intconstant comma int rightparen semicolon 
+int id assignop intconstant semicolon 
+for leftparen semicolon id less intconstant semicolon id plus plus rightparen leftbrace 
+println leftparen id rightparen semicolon 
+rightbrace 
+
+class id extends id implements id leftbrace 
+int id assignop intconstant semicolon 
+int id assignop intconstant semicolon 
+int id assignop intconstant semicolon 
+while leftparen id less intconstant rightparen leftbrace 
+if leftparen id equal intconstant rightparen leftbrace 
+println leftparen stringconstant rightparen semicolon 
+rightbrace 
+if leftparen id greaterequal intconstant rightparen leftbrace 
+println leftparen id mod id rightparen semicolon 
+rightbrace 
+if leftparen id lessequal intconstant rightparen leftbrace 
+println leftparen id multiplication id rightparen semicolon 
+rightbrace 
+if leftparen id greater intconstant rightparen leftbrace 
+println leftparen id division id rightparen semicolon 
+rightbrace 
+if leftparen id notequal intconstant and id less intconstant or id equal intconstant rightparen leftbrace 
+println leftparen id minus id rightparen semicolon 
+rightbrace 
+else leftbrace 
+println leftparen stringconstant rightparen semicolon 
+rightbrace 
+rightbrace 
+
+
+Trie Table:
+	A	B	C	D	E	F	G	H	I	J	K	L	M	N	O	P	Q	R	S	T	
+switch:	-1	-1	228	-1	-1	-1	-1	15	108	-1	-1	-1	-1	-1	-1	-1	-1	-1	-1	240
+
+	U	V	W	X	Y	Z	a	b	c	d	e	f	g	h	i	j	k	l	m	n	
+switch:	-1	-1	-1	-1	-1	-1	82	69	65	162	233	134	-1	151	6	-1	-1	-1	27	211
+
+	o	p	q	r	s	t	u	v	w	x	y	z	
+switch:	-1	0	-1	58	37	126	-1	74	272	-1	-1	-1
+
+	0	1	2	3	4	5	6	7	8	9	10	11	12	13	14	15	16	17	18	19	
+symbol:	u	b	l	i	c	*	n	t	e	r	f	a	c	e	*	e	l	p	e	r
+next:	203	 	 	 	 	 	110	54	26	 	 	 	 	 	 	 	 	 	 	 
+
+	20	21	22	23	24	25	26	27	28	29	30	31	32	33	34	35	36	37	38	39	
+symbol:	C	S	4	1	1	*	*	e	t	h	o	d	T	e	s	t	*	w	i	t
+next:	 	 	 	 	 	 	142	78	 	 	 	 	 	 	 	 	 	48	 	 
+
+	40	41	42	43	44	45	46	47	48	49	50	51	52	53	54	55	56	57	58	59	
+symbol:	c	h	C	a	s	e	s	*	t	r	i	n	g	*	p	u	t	*	e	a
+next:	 	 	64	 	 	 	 	 	170	 	 	 	 	 	 	 	 	 	 	168
+
+	60	61	62	63	64	65	66	67	68	69	70	71	72	73	74	75	76	77	78	79	
+symbol:	d	l	n	*	*	a	s	e	*	r	e	a	k	*	o	i	d	*	a	i
+next:	 	 	 	 	 	223	 	 	 	119	 	 	 	 	 	 	 	 	 	 
+
+	80	81	82	83	84	85	86	87	88	89	90	91	92	93	94	95	96	97	98	99	
+symbol:	n	*	b	c	d	e	f	g	h	i	j	k	l	n	m	o	p	q	r	s
+next:	 	 	210	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 
+
+	100	101	102	103	104	105	106	107	108	109	110	111	112	113	114	115	116	117	118	119	
+symbol:	t	u	v	w	x	y	z	*	F	*	f	i	n	t	v	o	i	d	*	o
+next:	 	 	 	 	 	 	 	 	 	 	219	281	 	 	 	 	 	 	 	 
+
+	120	121	122	123	124	125	126	127	128	129	130	131	132	133	134	135	136	137	138	139	
+symbol:	o	l	e	a	n	*	B	o	o	l	e	a	n	*	B	o	o	l	e	a
+next:	 	 	 	 	 	 	 	 	 	 	 	 	 	 	220	 	 	 	 	 
+
+	140	141	142	143	144	145	146	147	148	149	150	151	152	153	154	155	156	157	158	159	
+symbol:	n	*	V	a	r	i	a	b	l	e	*	e	x	L	o	w	*	H	i	g
+next:	 	 	 	 	 	 	 	 	 	 	 	 	 	157	 	 	 	 	 	 
+
+	160	161	162	163	164	165	166	167	168	169	170	171	172	173	174	175	176	177	178	179	
+symbol:	h	*	o	u	b	l	e	*	g	*	c	i	e	n	t	i	f	i	c	L
+next:	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	192	 	 	 	183
+
+	180	181	182	183	184	185	186	187	188	189	190	191	192	193	194	195	196	197	198	199	
+symbol:	o	w	*	H	i	g	h	*	P	o	s	*	f	i	c	H	i	g	h	N
+next:	 	 	 	 	 	 	 	188	 	 	 	 	 	 	 	 	 	 	 	 
+
+	200	201	202	203	204	205	206	207	208	209	210	211	212	213	214	215	216	217	218	219	
+symbol:	e	g	*	r	i	n	t	l	n	*	*	e	w	a	r	r	a	y	*	*
+next:	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	248
+
+	220	221	222	223	224	225	226	227	228	229	230	231	232	233	234	235	236	237	238	239	
+symbol:	o	r	*	l	a	s	s	*	S	4	1	1	*	x	t	e	n	d	s	*
+next:	 	 	 	261	 	 	 	 	 	 	 	 	 	282	268	 	 	 	 	 
+
+	240	241	242	243	244	245	246	247	248	249	250	251	252	253	254	255	256	257	258	259	
+symbol:	e	s	t	C	a	s	e	*	m	p	l	e	m	e	n	t	s	*	e	r
+next:	 	 	 	258	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 	 
+
+	260	261	262	263	264	265	266	267	268	269	270	271	272	273	274	275	276	277	278	279	
+symbol:	*	o	u	n	t	e	r	*	1	*	2	*	h	i	l	e	*	*	*	*
+next:	 	 	 	 	 	 	 	 	270	 	 	 	 	 	 	 	 	 	 	 
+
+	280	281	282	283	284	285	
+symbol:	*	*	l	s	e	*
+next:	 	 	 	 	 	 
+
