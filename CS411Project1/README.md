@@ -13,28 +13,31 @@ You need to install flex in a UNIX environment. sudo apt-get install flex.
 ## To Run The Lexical Analyzer
 
 The steps to run the lexical analyzer:
- lex CS411P1Lex.l
- cc lex.yy.c -ll
- ./a.out < Sample.toy
- ./a.out < CS411TestCase.toy
+
+    lex CS411P1Lex.l
+
+    cc lex.yy.c -ll
+
+    ./a.out < test.toy
+    ./a.out < CS411TestCase.toy
 
 ## Tests
 
-test.toy is provided by this project
-CS411TestCase.toy is my own test case
+    test.toy is provided by this project
+    CS411TestCase.toy is my own test case
 
-SampleOutput.txt is the output of the test.toy
-CS411TestCaseOutput.txt is the output of my own test case
+    SampleOutput.txt is the output of the test.toy
+    CS411TestCaseOutput.txt is the output of my own test case
 
-test.toy <--> SampleOutput.txt
-CS411TestCase.toy <--> CS411TestCaseOutput.txt
+    test.toy <--> SampleOutput.txt
+    CS411TestCase.toy <--> CS411TestCaseOutput.txt
 
 ## Project Specifications
 
 1. Keywords which are also reserved words. They cannot be used as identifiers or redefined:
-    boolean break class double else extends false for
-    if implements int interface newarray println readln
-    return string true void while
+   boolean break class double else extends false for
+   if implements int interface newarray println readln
+   return string true void while
     
 2. An identifier is a sequence of letters, digits, and underscores, starting with a letter. Toy is case-sensitive, e.g., if is a keyword, but IF is an identifier; hello and Hello are two distinct identifiers.
 
@@ -49,7 +52,6 @@ CS411TestCase.toy <--> CS411TestCaseOutput.txt
 7. A boolean constant is either true or false.
 
 8. Operators and punctuation characters include:
-    +   -   *   /   %   <   <=   >   >=   ==  
-    !=   =   ;   ,   .   (   )   [   ]   {   }
+   \+   -   *   /   %   <   <=   >   >=   ==  !=   =   ;   ,   .   (   )   [   ]   {   }
 
 9. A single-line comment is started by // and extends to the end of the line. Multi-line comments start with /* and end with the first subsequent */. Any symbol is allowed in a comment except the sequence */ which ends the current comment. Multi-line comments do not nest.
