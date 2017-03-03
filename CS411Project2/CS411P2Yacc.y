@@ -22,7 +22,7 @@ VariableDecls : /* zero */
 VariableDecl : Variable _semicolon
 	 ;
 
-Variable : Type id
+Variable : Type _id
 	 ;
 
 Type : int 
@@ -30,11 +30,11 @@ Type : int
 	 | boolean 
 	 | string 
 	 | Type "[]"  
-	 | id
+	 | _id
 	 ;
 
-FunctionDecl : Type id "(" Formals ")" StmtBlock 
-	 | void id "(" Formals ")" StmtBlock
+FunctionDecl : Type _id "(" Formals ")" StmtBlock 
+	 | vo_id _id "(" Formals ")" StmtBlock
 	 ;
 
 Formals : Variables
@@ -46,7 +46,7 @@ Variables : Variable
 	 | Variables "," Variable
 	 ;
 
-ClassDecl : class id "<" extends id ">" "<" implements ids ">" "{" Fields "}"
+ClassDecl : class _id "<" extends _id ">" "<" implements ids ">" "{" Fields "}"
 	 ;
 Fields : /* zero */
 	 | Fields Field
@@ -56,19 +56,19 @@ Field : VariableDecl
 	 | FunctionDecl
 	 ;
 
-ids : id
-	| ids"," id
+ids : _id
+	| ids"," _id
 	;
 
-InterfaceDecl : interface id "{" Prototypes "}"
+InterfaceDecl : interface _id "{" Prototypes "}"
 	 ;
 
 Prototypes : /* zero */
 	 | Prototypes Prototype
 	 ;
 
-Prototype : Type id "(" Formals ")" _semicolon
-	 | void id "(" Formals ")" _semicolon
+Prototype : Type _id "(" Formals ")" _semicolon
+	 | vo_id _id "(" Formals ")" _semicolon
 	 ;
 
 StmtBlock : "{" VariableDecls Stmts "}"
@@ -135,13 +135,13 @@ Expr : Lvalue "=" Expr
 	 | newarray "(" intconstant "," Type ")"
 	 ;
 
-Lvalue : id 
+Lvalue : _id 
 	 | Lvalue "[" Expr "]"  
-	 | Lvalue "." id
+	 | Lvalue "." _id
 	 ;
 
-Call : id "(" Actuals ")" 
-	 | id "." id "(" Actuals ")"
+Call : _id "(" Actuals ")" 
+	 | _id "." _id "(" Actuals ")"
 	 ;
 
 Actuals : /* Epsilon */ 
