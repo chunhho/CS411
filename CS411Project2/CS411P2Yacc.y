@@ -43,7 +43,7 @@ Formals : Variables
 
 /* Left-recursion */
 Variables : Variable
-	 | Variables, Variable
+	 | Variables "," Variable
 	 ;
 
 ClassDecl : class id "<" extends id ">" "<" implements ids ">" "{" Fields "}"
@@ -57,7 +57,7 @@ Field : VariableDecl
 	 ;
 
 ids : id
-	| ids, id
+	| ids"," id
 	;
 
 InterfaceDecl : interface id "{" Prototypes "}"
@@ -108,7 +108,7 @@ PrintStmt : println "(" Exprs ")" _semicolon
 	 ;
 
 Exprs : Expr
-	 | Exprs, Expr
+	 | Exprs"," Expr
 	 ;	 
 
 Expr : Lvalue "=" Expr 
@@ -143,8 +143,12 @@ Lvalue : id
 Call : id "(" Actuals ")" 
 	 | id "." id "(" Actuals ")"
 	 ;
-Actuals : Exprs 
-	 | Constant ":" intconstant 
+
+Actuals : /* Epsilon */ 
+	 : Exprs
+	 ;
+	 
+Constant ":" intconstant 
 	 | doubleconstant 
 	 | stringconstant 
 	 | booleanconstant
