@@ -3,16 +3,17 @@ include <stdio.h>
 %}
 
 %start Program
-%token _leftbracket _rightbracket _period
-%token _not _minus
-%token _multiplication _division _mod
-%token _plus _minus
-%token _less _lessequal _greater _greaterequal
-%token _equal _notequal
-%token _and
-%token _or
-%token _assignop
-%token _void _id _leftparen _rightparen _doubleconstant _stringconstant _leftbrace _rightbrace _semicolon _boolean _double _int _string _class _implements
+%token _void _id _leftparen _rightparen _leftbrace _rightbrace _leftbracket _rightbracket _semicolon _boolean _double _int _string _class _implements _interface
+%token _if _else _break _class _extends _false _for _newarray _println _readln _return _while _comma _period _intconstant _doubleconstant _stringconstant _booleanconstant 
+%left _assignop
+%left _or
+%left _and
+%left _equal _notequal
+%left _less _lessequal _greater _greaterequal
+%left _plus _minus
+%left _multiplication _division _mod
+%right _not
+%left _leftbracket _rightbracket _period
 
 %%
 
@@ -81,10 +82,10 @@ Field : VariableDecl
 	 ;
 
 ids : _id
-	| ids_comma _id
+	| ids _comma _id
 	;
 
-InterfaceDecl : interface _id _leftbracket Prototypes _rightbracket
+InterfaceDecl : _interface _id _leftbracket Prototypes _rightbracket
 	 ;
 
 Prototypes : /* zero */
@@ -133,10 +134,10 @@ ForStmt : _for _leftparen ExprA _semicolon Expr _semicolon ExprA _rightparen Stm
 BreakStmt : _break _semicolon
 	 ;
 
-ReturnStmt : return ExprA _semicolon
+ReturnStmt : _return ExprA _semicolon
 	 ;
 
-PrintStmt : println _leftparen Exprs _rightparen _semicolon
+PrintStmt : _println _leftparen Exprs _rightparen _semicolon
 	 ;
 
 Exprs : Expr
@@ -153,7 +154,7 @@ Expr : Lvalue _assignop Expr
 	 | Expr _multiplication Expr 
 	 | Expr _division Expr 
 	 | Expr _mod Expr 
-	 | "-" Expr 
+	 | _minus Expr  %prec _multiplication 
 	 | Expr _less  Expr 
 	 | Expr _lessequal Expr 
 	 | Expr _greater Expr 
@@ -162,22 +163,23 @@ Expr : Lvalue _assignop Expr
 	 | Expr _notequal Expr 
 	 | Expr _and Expr 
 	 | Expr _or Expr 
-	 | "!" Expr
+	 | _not Expr
 	 | _readln"()" 
 	 | _newarray _leftparen _intconstant _comma Type _rightparen
 	 ;
 
-Lvalue : id 
+
+Lvalue : _id 
 	 | Lvalue _rightbrace Expr _rightbrace  
 	 | Lvalue _period _id
 	 ;
 
-Call : id _leftparen Actuals _rightparen 
+Call : _id _leftparen Actuals _rightparen 
 	 | _id _period _id _leftparen Actuals _rightparen
 	 ;
 
 Actuals : /* Epsilon */ 
-	 : Exprs
+	 | Exprs
 	 ;
 	 
 Constant : _intconstant 
