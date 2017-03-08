@@ -1,10 +1,11 @@
 %{
-include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 %}
 
 %start Program
 %token _void _id _leftparen _rightparen _leftbrace _rightbrace _leftbracket _rightbracket _semicolon _boolean _double _int _string _class _implements _interface
-%token _if _else _break _class _extends _false _for _newarray _println _readln _return _while _comma _period _intconstant _doubleconstant _stringconstant _booleanconstant 
+%token _if _else _break _extends _for _newarray _println _readln _return _while _comma _period _intconstant _doubleconstant _stringconstant _booleanconstant 
 %left _assignop
 %left _or
 %left _and
@@ -14,177 +15,198 @@ include <stdio.h>
 %left _multiplication _division _mod
 %right _not
 %left _leftbracket _rightbracket _period
+%nonassoc IFOnly
+%nonassoc _else
+
+%expect 2
 
 %%
 
-Program : Decls
+Program : Decls {printf("[Reduce %i%s", yyn, "]");}
 	;
 
 /* Left-recursion */
-Decls : Decl
-	  | Decls Decl
+Decls : Decl        {printf("[Reduce %i%s", yyn, "]");}
+	  | Decls Decl  {printf("[Reduce %i%s", yyn, "]");}
 	  ;
 
-Decl : VariableDecl 
-	 | FunctionDecl 
-	 | ClassDecl 
-	 | InterfaceDecl
+Decl : VariableDecl  {printf("[Reduce %i%s", yyn, "]");} 
+	 | FunctionDecl  {printf("[Reduce %i%s", yyn, "]");}
+	 | ClassDecl     {printf("[Reduce %i%s", yyn, "]");}
+	 | InterfaceDecl {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-VariableDecls : /* zero */
-	 | VariableDecls VariableDecl
+VariableDecls : /* zero */        {printf("[Reduce %i%s", yyn, "]");}
+	 | VariableDecls VariableDecl {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-VariableDecl : Variable _semicolon
+VariableDecl : Variable _semicolon {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-Variable : Type _id
+Variable : Type _id {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-Type : _int 
-	 | _double 
-	 | _boolean 
-	 | _string 
-	 | Type "[]"  
-	 | _id
+Type : _int         {printf("[Reduce %i%s", yyn, "]");}
+	 | _double      {printf("[Reduce %i%s", yyn, "]");}
+	 | _boolean     {printf("[Reduce %i%s", yyn, "]");}
+	 | _string      {printf("[Reduce %i%s", yyn, "]");}
+	 | Type _leftbracket _rightbracket {printf("[Reduce %i%s", yyn, "]");} 
+	 | _id          {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-FunctionDecl : Type _id _leftparen Formals _rightparen StmtBlock 
-	 | _void _id _leftparen Formals _rightparen StmtBlock
+FunctionDecl : Type _id _leftparen Formals _rightparen StmtBlock {printf("[Reduce %i%s", yyn, "]");}
+	 | _void _id _leftparen Formals _rightparen StmtBlock        {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-Formals : Variables
-	 | /* epsilon */
+Formals : Variables     {printf("[Reduce %i%s", yyn, "]");}
+	 | /* epsilon */    {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
 /* Left-recursion */
-Variables : Variable
-	 | Variables _comma Variable
+Variables : Variable             {printf("[Reduce %i%s", yyn, "]");}
+	 | Variables _comma Variable {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-ClassDecl : _class _id extend implement _leftbracket Fields _rightbracket
+ClassDecl : _class _id extend implement _leftbrace Fields _rightbrace {printf("[Reduce %i%s", yyn, "]");}
      ;
 
-extend: /* zero */
-     | _extends _id
+extend: /* zero */  {printf("[Reduce %i%s", yyn, "]");}
+     | _extends _id {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-implement: /* zero */
-     | _implements ids
+implement: /* zero */   {printf("[Reduce %i%s", yyn, "]");}
+     | _implements ids  {printf("[Reduce %i%s", yyn, "]");}
      ;
 
-Fields : /* zero */
-	 | Fields Field
+Fields : /* zero */ {printf("[Reduce %i%s", yyn, "]");}
+	 | Fields Field {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-Field : VariableDecl
-	 | FunctionDecl
+Field : VariableDecl {printf("[Reduce %i%s", yyn, "]");}
+	 | FunctionDecl {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-ids : _id
-	| ids _comma _id
+ids : _id               {printf("[Reduce %i%s", yyn, "]");}
+	| ids _comma _id    {printf("[Reduce %i%s", yyn, "]");}
 	;
 
-InterfaceDecl : _interface _id _leftbracket Prototypes _rightbracket
+InterfaceDecl : _interface _id _leftbrace Prototypes _rightbrace {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-Prototypes : /* zero */
-	 | Prototypes Prototype
+Prototypes : /* zero */     {printf("[Reduce %i%s", yyn, "]");}
+	 | Prototypes Prototype {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-Prototype : Type _id _leftparen Formals _rightparen _semicolon
-	 | _void _id _leftparen Formals _rightparen _semicolon
+Prototype : Type _id _leftparen Formals _rightparen _semicolon {printf("[Reduce %i%s", yyn, "]");}
+	 | _void _id _leftparen Formals _rightparen _semicolon     {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-StmtBlock : _leftbracket VariableDecls Stmts _rightbracket
+StmtBlock : _leftbrace VariableDecls Stmts _rightbrace {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-Stmts : /* zero */
-	 | Stmts Stmt
+Stmts : /* zero */ {printf("[Reduce %i%s", yyn, "]");}
+	 | Stmts Stmt  {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-Stmt : ExprA _semicolon
-	 | IfStmt
-	 | WhileStmt 
-	 | ForStmt 
-	 | BreakStmt 
-	 | ReturnStmt 
-	 | PrintStmt 
-	 | StmtBlock
+Stmt : ExprA _semicolon {printf("[Reduce %i%s", yyn, "]");}
+	 | IfStmt           {printf("[Reduce %i%s", yyn, "]");}
+	 | WhileStmt        {printf("[Reduce %i%s", yyn, "]");}
+	 | ForStmt          {printf("[Reduce %i%s", yyn, "]");}
+	 | BreakStmt        {printf("[Reduce %i%s", yyn, "]");}
+	 | ReturnStmt       {printf("[Reduce %i%s", yyn, "]");}
+	 | PrintStmt        {printf("[Reduce %i%s", yyn, "]");}
+	 | StmtBlock        {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-ExprA : /* zero */
-     | Expr
+ExprA : /* zero */ {printf("[Reduce %i%s", yyn, "]");}
+     | Expr        {printf("[Reduce %i%s", yyn, "]");}
      ;
 
-IfStmt : _if _leftparen Expr _rightparen Stmt else
+IfStmt : _if _leftparen Expr _rightparen Stmt %prec IFOnly {printf("[Reduce %i%s", yyn, "]");}
+	 | _if _leftparen Expr _rightparen Stmt _else Stmt     {printf("[Reduce %i%s", yyn, "]");}
+     ;
+
+WhileStmt : _while _leftparen Expr _rightparen Stmt {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-else : /* zero */
-     | _else Stmt
-     ; 
-
-
-WhileStmt : _while _leftparen Expr _rightparen Stmt
+ForStmt : _for _leftparen ExprA _semicolon Expr _semicolon ExprA _rightparen Stmt {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-ForStmt : _for _leftparen ExprA _semicolon Expr _semicolon ExprA _rightparen Stmt
+BreakStmt : _break _semicolon {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-BreakStmt : _break _semicolon
+ReturnStmt : _return ExprA _semicolon {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-ReturnStmt : _return ExprA _semicolon
+PrintStmt : _println _leftparen Exprs _rightparen _semicolon {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-PrintStmt : _println _leftparen Exprs _rightparen _semicolon
-	 ;
-
-Exprs : Expr
-	 | Exprs _comma Expr
+Exprs : Expr             {printf("[Reduce %i%s", yyn, "]");}
+	 | Exprs _comma Expr {printf("[Reduce %i%s", yyn, "]");}
 	 ;	 
 
-Expr : Lvalue _assignop Expr 
-	 | Constant 
-	 | Lvalue 
-	 | Call 
-	 | _leftparen Expr _rightparen 
-	 | Expr _plus Expr 
-	 | Expr _minus Expr 
-	 | Expr _multiplication Expr 
-	 | Expr _division Expr 
-	 | Expr _mod Expr 
-	 | _minus Expr  %prec _multiplication 
-	 | Expr _less  Expr 
-	 | Expr _lessequal Expr 
-	 | Expr _greater Expr 
-	 | Expr _greaterequal Expr 
-	 | Expr _equal Expr 
-	 | Expr _notequal Expr 
-	 | Expr _and Expr 
-	 | Expr _or Expr 
-	 | _not Expr
-	 | _readln"()" 
-	 | _newarray _leftparen _intconstant _comma Type _rightparen
+Expr : Lvalue _assignop Expr {printf("[Reduce %i%s", yyn, "]");}
+	 | Constant             {printf("[Reduce %i%s", yyn, "]");} 
+	 | Lvalue               {printf("[Reduce %i%s", yyn, "]");}
+	 | Call                 {printf("[Reduce %i%s", yyn, "]");}
+	 | _leftparen Expr _rightparen {printf("[Reduce %i%s", yyn, "]");}
+	 | Expr _plus Expr             {printf("[Reduce %i%s", yyn, "]");}
+	 | Expr _minus Expr            {printf("[Reduce %i%s", yyn, "]");}
+	 | Expr _multiplication Expr   {printf("[Reduce %i%s", yyn, "]");}
+	 | Expr _division Expr         {printf("[Reduce %i%s", yyn, "]");}
+	 | Expr _mod Expr              {printf("[Reduce %i%s", yyn, "]");}
+	 | _minus Expr  %prec _multiplication {printf("[Reduce %i%s", yyn, "]");} 
+	 | Expr _less  Expr                   {printf("[Reduce %i%s", yyn, "]");}
+	 | Expr _lessequal Expr               {printf("[Reduce %i%s", yyn, "]");}
+	 | Expr _greater Expr                 {printf("[Reduce %i%s", yyn, "]");}
+	 | Expr _greaterequal Expr            {printf("[Reduce %i%s", yyn, "]");}
+	 | Expr _equal Expr                   {printf("[Reduce %i%s", yyn, "]");}
+	 | Expr _notequal Expr                {printf("[Reduce %i%s", yyn, "]");}      
+	 | Expr _and Expr                     {printf("[Reduce %i%s", yyn, "]");}
+	 | Expr _or Expr                      {printf("[Reduce %i%s", yyn, "]");}
+	 | _not Expr                          {printf("[Reduce %i%s", yyn, "]");}
+	 | _readln"()"                        {printf("[Reduce %i%s", yyn, "]");}
+	 | _newarray _leftparen _intconstant _comma Type _rightparen {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-
-Lvalue : _id 
-	 | Lvalue _rightbrace Expr _rightbrace  
-	 | Lvalue _period _id
+ 
+/*Shift-Reduce */
+Lvalue : _id {printf("[Reduce %i%s", yyn, "]");}
+	 | Lvalue _leftbracket Expr _rightbracket   {printf("[Reduce %i%s", yyn, "]");}
+	 | Lvalue _period _id                       {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-Call : _id _leftparen Actuals _rightparen 
-	 | _id _period _id _leftparen Actuals _rightparen
+Call : _id _leftparen Actuals _rightparen             {printf("[Reduce %i%s", yyn, "]");}
+	 | _id _period _id _leftparen Actuals _rightparen {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-Actuals : /* Epsilon */ 
-	 | Exprs
+Actuals : /* Epsilon */ {printf("[Reduce %i%s", yyn, "]");}
+	 | Exprs            {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 	 
-Constant : _intconstant 
-	 | _doubleconstant 
-	 | _stringconstant 
-	 | _booleanconstant
+Constant : _intconstant {printf("[Reduce %i%s", yyn, "]");}
+	 | _doubleconstant  {printf("[Reduce %i%s", yyn, "]");}
+	 | _stringconstant  {printf("[Reduce %i%s", yyn, "]");}
+	 | _booleanconstant {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 %%
+
+int main(){
+
+    yyparse();
+    printf("\n");
+    return 0;
+}
+
+void yyerror (char *s) {fprintf(stderr, "%s\n", s);}
+
+int yywrap (void) {return 1;}
+
+
+
+
+
+
+
+
+
