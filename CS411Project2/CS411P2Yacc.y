@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
-#include <stdlib.h>
+int yylex();
+void yyerror(char *s);
 %}
 
 %start Program
@@ -17,8 +18,6 @@
 %left _leftbracket _rightbracket _period
 %nonassoc IFOnly
 %nonassoc _else
-
-%expect 2
 
 %%
 
@@ -51,7 +50,7 @@ Type : _int         {printf("[Reduce %i%s", yyn, "]");}
 	 | _boolean     {printf("[Reduce %i%s", yyn, "]");}
 	 | _string      {printf("[Reduce %i%s", yyn, "]");}
 	 | Type _leftbracket _rightbracket {printf("[Reduce %i%s", yyn, "]");} 
-	 | _id          {printf("[Reduce %i%s", yyn, "]");}
+	 | _id        {printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
 FunctionDecl : Type _id _leftparen Formals _rightparen StmtBlock {printf("[Reduce %i%s", yyn, "]");}
@@ -171,13 +170,19 @@ Expr : Lvalue _assignop Expr {printf("[Reduce %i%s", yyn, "]");}
 
  
 /*Shift-Reduce */
-Lvalue : _id {printf("[Reduce %i%s", yyn, "]");}
-	 | Lvalue _leftbracket Expr _rightbracket   {printf("[Reduce %i%s", yyn, "]");}
-	 | Lvalue _period _id                       {printf("[Reduce %i%s", yyn, "]");}
+Lvalue : _id 				{printf("[Reduce %i%s", yyn, "]");} 
+	 | Lvalue LvalueX   			{printf("[Reduce %i%s", yyn, "]");}
 	 ;
 
-Call : _id _leftparen Actuals _rightparen             {printf("[Reduce %i%s", yyn, "]");}
-	 | _id _period _id _leftparen Actuals _rightparen {printf("[Reduce %i%s", yyn, "]");}
+LvalueX : _leftbracket Expr _rightbracket  	{printf("[Reduce %i%s", yyn, "]");}
+   	| LvalueX ProdPDANDID  			{printf("[Reduce %i%s", yyn, "]");} 
+	;
+
+Call : _id _leftparen Actuals _rightparen 			{printf("[Reduce %i%s", yyn, "]");}
+	 | _id ProdPDANDID _leftparen Actuals _rightparen    {printf("[Reduce %i%s", yyn, "]");} 
+	 ;
+
+ProdPDANDID : _period _id
 	 ;
 
 Actuals : /* Epsilon */ {printf("[Reduce %i%s", yyn, "]");}
