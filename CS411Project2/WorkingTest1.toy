@@ -1,0 +1,11 @@
+/* Simple class */
+class Course{  
+      int term;
+      int capacity;
+      string courseID;
+      string courseName;
+
+      void printInfo(){
+       println(term, capacity, courseID, courseName);
+      }
+} 

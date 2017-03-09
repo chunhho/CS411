@@ -1,6 +1,7 @@
 %{
 #include <stdio.h>
-int yylex();
+extern int yylex();
+extern int yyparse();
 void yyerror(char *s);
 %}
 
@@ -18,6 +19,7 @@ void yyerror(char *s);
 %left _leftbracket _rightbracket _period
 %nonassoc IFOnly
 %nonassoc _else
+%expect 1
 
 %%
 
@@ -198,12 +200,18 @@ Constant : _intconstant {printf("[Reduce %i%s", yyn, "]");}
 
 int main(){
 
-    yyparse();
+    int rtnVal = yyparse();
+    if (rtnVal == 0){
+	printf("\n[Accept]");
+    }
+    else{
+     printf("\n[Reject]");
+    }
     printf("\n");
     return 0;
 }
 
-void yyerror (char *s) {fprintf(stderr, "%s\n", s);}
+void yyerror (char *s) {/*Rejected*/}
 
 int yywrap (void) {return 1;}
 
