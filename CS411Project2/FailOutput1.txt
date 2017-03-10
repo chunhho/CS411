@@ -1,0 +1,91 @@
+
+
+interface [Shift]
+HelperCS411 [Shift]
+{ [Shift][Reduce 38]
+
+
+} [Shift][Reduce 37][Reduce 8][Reduce 3]
+
+int [Shift][Reduce 14]
+methodTest [Shift]
+( [Shift]
+int [Shift][Reduce 14]
+switchCases [Shift][Reduce 12][Reduce 24]
+) [Reduce 22][Shift]
+{ [Shift][Reduce 9]
+
+
+} [Reduce 43][Shift][Reduce 42][Reduce 20][Reduce 6][Reduce 4]
+
+
+
+void [Shift]
+main [Shift]
+( [Shift]
+) [Reduce 23][Shift]
+{ [Shift][Reduce 9]
+
+
+int [Shift][Reduce 14]
+IF [Shift][Reduce 12]
+; [Shift][Reduce 11][Reduce 10]
+
+int [Shift][Reduce 14]
+ifintvoid [Shift][Reduce 12]
+; [Shift][Reduce 11][Reduce 10]
+
+println [Reduce 43][Shift]
+( [Shift]
+"This is a println test" [Shift][Reduce 97][Reduce 65]
+) [Reduce 62][Shift]
+; [Shift][Reduce 61][Reduce 51][Reduce 44]
+
+a [Shift]
+= [Reduce 86][Shift]
+newarray [Shift]
+( [Shift]
+20 [Shift]
+, [Shift]
+int [Shift][Reduce 14]
+) [Shift][Reduce 85]
+; [Reduce 64][Reduce 54][Shift][Reduce 45][Reduce 44]
+
+for [Shift]
+( [Shift]
+; [Reduce 53][Shift]
+i [Shift]
+< [Reduce 86][Reduce 66][Shift]
+10 [Shift][Reduce 95][Reduce 65]
+; [Reduce 75][Shift]
+i [Shift]
+= [Reduce 86][Shift]
+i [Shift]
++ [Reduce 86][Reduce 66][Shift]
+1 [Shift][Reduce 95][Reduce 65]
+) [Reduce 69][Reduce 64][Reduce 54][Shift]
+{ [Shift][Reduce 9]
+
+println [Reduce 43][Shift]
+( [Shift]
+i [Shift]
+) [Reduce 86][Reduce 66][Reduce 62][Shift]
+; [Shift][Reduce 61][Reduce 51][Reduce 44]
+
+} [Shift][Reduce 42][Reduce 52][Reduce 58][Reduce 48][Reduce 44]
+
+} [Shift][Reduce 42][Reduce 21][Reduce 6][Reduce 4]
+
+
+class [Shift]
+CS411 [Shift]
+extends [Shift]
+TestCase [Shift][Reduce 28]
+implements [Shift]
+Tester [Shift][Reduce 35]
+{ [Reduce 30][Shift][Reduce 31]
+
+int [Shift][Reduce 14]
+counter [Shift]
+= [Reduce 12]
+[Reject]

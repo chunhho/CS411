@@ -1,0 +1,46 @@
+/* CS411 P2
+by Chun Ho and Mark Erickson */
+
+interface HelperCS411{
+
+}
+int methodTest(int switchCases){
+
+}
+
+     
+void main(){
+  
+   int IF;
+   int ifintvoid;
+   println("This is a println test");
+   a = newarray(20,int);
+   for  ( ; i<10;i=i+1){
+      println(i);
+   }
+}
+   
+class CS411 extends TestCase implements Tester{
+   int counter = 0;
+   int ex1 = 44;
+   int ex2 = 44;
+   while (counter < 1000){
+      if (counter == 7){
+         println("equality");
+      }
+      if (counter >= 8){
+         println(ex1 % ex2);
+      }
+      if (counter <= 6){
+         println(ex1 * ex2);
+      }
+      if (counter >50){
+         println(ex1/ex2);
+      }
+      if (counter != 23 && counter < 65 || counter == 17){
+         println(ex1 - ex2);
+      }
+      else{
+         println("else statement");
+      }
+}

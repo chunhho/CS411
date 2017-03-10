@@ -1,0 +1,16 @@
+/* CS411 P2
+by Chun Ho and Mark Erickson */
+
+
+class Incorrect {
+   int count;
+   boolean ex1;
+   string ex2;
+   
+   void main(){
+     for(int int x = 20; x < ex1; println()){
+	println(x);
+	}
+
+   }
+}

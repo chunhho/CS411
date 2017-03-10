@@ -12,5 +12,13 @@ make -f CS411P2Makefile.mk
 
 ./a.out < test.toy > TestOutput.txt
 
+./a.out < TestFromP1.toy > FailOutput1.txt
+
+./a.out < FailInput.toy > FailOutput2.txt
+
+
+To remove the files:
+
+make -f CS411P2Makefile.mk clean
 
 By Chun Ho and Mark Erickson

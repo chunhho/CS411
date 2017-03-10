@@ -11,7 +11,7 @@ int multiplication(int a, int b){
     return a * b;
 }
 
-float division(float a, int b){
+int division(int a, int b){
     return a / b;
 }
 

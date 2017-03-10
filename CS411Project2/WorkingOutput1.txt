@@ -1,0 +1,45 @@
+
+class [Shift]
+Course [Shift]
+{ [Reduce 27][Reduce 29][Shift][Reduce 31]
+
+int [Shift][Reduce 14]
+term [Shift]
+; [Reduce 12][Shift][Reduce 11][Reduce 33][Reduce 32]
+
+int [Shift][Reduce 14]
+capacity [Shift]
+; [Reduce 12][Shift][Reduce 11][Reduce 33][Reduce 32]
+
+string [Shift][Reduce 17]
+courseID [Shift]
+; [Reduce 12][Shift][Reduce 11][Reduce 33][Reduce 32]
+
+string [Shift][Reduce 17]
+courseName [Shift]
+; [Reduce 12][Shift][Reduce 11][Reduce 33][Reduce 32]
+
+
+void [Shift]
+printInfo [Shift]
+( [Shift]
+) [Reduce 23][Shift]
+{ [Shift][Reduce 9]
+
+println [Reduce 43][Shift]
+( [Shift]
+term [Shift]
+, [Reduce 86][Reduce 66][Reduce 62][Shift]
+capacity [Shift]
+, [Reduce 86][Reduce 66][Reduce 63][Shift]
+courseID [Shift]
+, [Reduce 86][Reduce 66][Reduce 63][Shift]
+courseName [Shift]
+) [Reduce 86][Reduce 66][Reduce 63][Shift]
+; [Shift][Reduce 61][Reduce 51][Reduce 44]
+
+} [Shift][Reduce 42][Reduce 21][Reduce 34][Reduce 32]
+
+} [Shift][Reduce 26][Reduce 7][Reduce 3]
+[Reduce 2][Shift]
+[Accept]

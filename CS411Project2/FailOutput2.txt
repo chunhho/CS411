@@ -1,0 +1,30 @@
+
+
+
+class [Shift]
+Incorrect [Shift]
+{ [Reduce 27][Reduce 29][Shift][Reduce 31]
+
+int [Shift][Reduce 14]
+count [Shift]
+; [Reduce 12][Shift][Reduce 11][Reduce 33][Reduce 32]
+
+boolean [Shift][Reduce 16]
+ex1 [Shift]
+; [Reduce 12][Shift][Reduce 11][Reduce 33][Reduce 32]
+
+string [Shift][Reduce 17]
+ex2 [Shift]
+; [Reduce 12][Shift][Reduce 11][Reduce 33][Reduce 32]
+
+
+void [Shift]
+main [Shift]
+( [Shift]
+) [Reduce 23][Shift]
+{ [Shift][Reduce 9]
+
+for [Reduce 43][Shift]
+( [Shift]
+int [Reduce 53]
+[Reject]
