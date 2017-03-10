@@ -1,6 +1,6 @@
 CS411 Project 2 Syntax Analyzer:
 
-This program runs on a linux environment and it requires flex and yacc/bison to be installed.
+This program runs on a linux environment and it requires flex and yacc/bison to be installed. The shift-conflict information can be read in y.output after running the make -f CS411P2Makefile.mk command.
 
 Type the following commands to execute this program:
 
